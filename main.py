@@ -8,7 +8,7 @@ def calc_diff(im1, im2):
     return np.abs(np.mean(im1) - np.mean(im2))
 
 mask = './mask_1920_1080.png'
-video_path = './samples/parking_1920_1080_loop.mp4'
+video_path = './data/parking_1920_1080_loop.mp4'
 
 mask = cv2.imread(mask, 0)
 
@@ -28,6 +28,10 @@ ret = True
 step = 30
 while ret:
     ret, frame = cap.read()
+
+    if frame is None:
+        print('frame cannot be read')
+        break
 
     if frame_nmr % step == 0 and previous_frame is not None:
         for spot_indx, spot in enumerate(spots):
@@ -51,9 +55,9 @@ while ret:
 
             spot_crop = frame[y1:y1+h, x1:x1+w, :]
 
-            spots_status = empty_or_not(spot_crop)
+            spot_status = empty_or_not(spot_crop)
 
-            spots_status[spot_indx] = spots_status
+            spots_status[spot_indx] = spot_status
 
     if frame_nmr % step == 0:
         previous_frame = frame.copy()
