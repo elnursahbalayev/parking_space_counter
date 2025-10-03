@@ -67,11 +67,3 @@ This project uses computer vision and machine learning techniques to detect and 
 3. For each frame (at specified intervals), it extracts each parking spot and classifies it as empty or occupied using a pre-trained machine learning model.
 4. The application displays the video with rectangles around each parking spot (green for empty, red for occupied) and shows the count of available spots.
 5. To optimize performance, the application only processes frames at specified intervals and uses a difference-based approach to prioritize spots that might have changed.
-
-## License
-
-[Include license information here]
-
-## Acknowledgments
-
-[Include any acknowledgments or credits here]
